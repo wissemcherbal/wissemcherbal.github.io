@@ -66,11 +66,11 @@ $(document).ready(function () {
 		offset: "80%"
 	});
 
-	
-    
-    
+
+
+
     //************ Magnific Popup
-    
+
 
     $('.zoom,.zoom1').magnificPopup({
         type: 'image',
@@ -78,9 +78,9 @@ $(document).ready(function () {
             enabled: true
         }
     });
-	
-	
-    
+
+
+
     //*************** Isotope filter
 
     var $Container = $('#img-filter');
@@ -138,9 +138,9 @@ $(document).ready(function () {
         }
     });
 
-	
-	
-	
+
+
+
 
 
 });

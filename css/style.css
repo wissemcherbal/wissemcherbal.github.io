@@ -54,6 +54,17 @@ body{
     line-height: 1.7;
     color: #333333;
     font-weight: 400;
+    margin:0;
+}
+.highlight-section {
+    background-color: #e3ffd8;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%; /* Ajustez la largeur selon vos besoins */
+    max-width: 800px; /* Optionnel, ajuste la largeur maximale */
+    text-align: center; /* Centre le texte et les images */
+    border-radius: 8px; /* Arrondit les coins */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajoute une ombre subtile */
 }
 
 h1,
@@ -110,6 +121,14 @@ img {
 .section-title h2 span{
     color: #ff5757;
 }
+.section-title::after {
+    content: ""; /* Nécessaire pour afficher le pseudo-élément */
+    display: block;
+    width: 10%; /* Ajuste la largeur du trait selon tes besoins */
+    height: 2px; /* Ajuste l'épaisseur du trait */
+    background-color: #80827f; /* Couleur du trait, ajustable selon tes besoins */
+    margin: 10px auto 0; /* Centre le trait et ajoute un espacement au-dessus */
+}
 .section-title h2 {
     font-size: 40px;
     color: #262626;
@@ -143,7 +162,7 @@ img {
 
 .loader:before, .loader:after {
     content: '';
-    border: 1em solid #ff5757;
+    border: 1em solid #acdc91;
     border-radius: 50%;
     width: inherit;
     height: inherit;
@@ -294,7 +313,7 @@ img {
 }
 
 .sticky_navigation .nav li.active a{
-    color: #ff5757;
+    color: #acdc91;
 }
 
 .sticky_navigation .nav li.active::after {
@@ -361,7 +380,7 @@ img {
 }
 
 .navbar-right li.active a{
-    color: #ff5757;
+    color: #acdc91;
 }
 
 .nav > li > a:hover,
@@ -379,16 +398,29 @@ img {
 /*----------- 5. Banner area css starts--------------*/
 
 
-.banner-area{
-    background-image: url(../images/cloud3.png); /*--edit image--*/
-    background-position: center;
-    background-size:cover;
+.banner-area {
     position: relative;
+    height: 100vh; /* S'assurer que la bannière occupe toute la hauteur de la fenêtre */
+    overflow: hidden; /* Empêcher la vidéo de dépasser */
+}
+
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
+    object-fit: cover; /* Assure que la vidéo couvre tout l'écran */
+    z-index: -1; /* Place la vidéo derrière tout le contenu */
+}
+
+.banner-area, .about-area, .services-area, .skills-area, .portfolio-area, .statistic-area, .experience-area, .contact-area {
+    position: relative;
+    background: transparent; /* Assurez-vous que le fond est transparent */
 }
 
 .about-area{
-    background-image: url(../images/cloud4.png); /*--edit image--*/
+    /* background-image: url(../images/cloud4.png); /*--edit image--*/ */
     background-position: center;
     background-size:cover;
     position: relative;
@@ -396,7 +428,7 @@ img {
 }
 
 .experience-area{
-    background-image: url(../images/fond2.png); /*--edit image--*/
+    /* background-image: url(../images/fond2.png); /*--edit image--*/ */
     background-position: center;
     background-size:cover;
     position: relative;
@@ -404,7 +436,7 @@ img {
 }
 
 .contact-area{
-    background-image: url(../images/fond2.png); /*--edit image--*/
+    /* background-image: url(../images/fond2.png); /*--edit image--*/ */
     background-position: center;
     background-size:cover;
     position: relative;
@@ -417,18 +449,36 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.7);
+    /* background: rgba(0,0,0,0.5); */
     content: '';
 }
 
 .img-area {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
+    width: 170px;
+    height: 170px;
     overflow: hidden;
-    border: 5px solid #fff;
     display: inline-block;
 }
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Ombre appliquée directement à l'image */
+}
+
+
+
+.fade-in-image {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in-image.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 .banner-area b{
     font-weight: 100;
@@ -539,6 +589,39 @@ canvas{
 /*---------Banner area css ends--------------*/
 
 /*---------- 6. About area css starts---------------*/
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-image {
+    animation: fadeIn 2s ease-out;
+    /* Optionnel : Ajoutez un délai pour que l'animation se déclenche plus tard si nécessaire */
+    animation-delay: 0.5s;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    text-align: center; /* Centrer le texte */
+    background-color: rgba(227, 255, 216, 0.3); /* Couleur #e3ffd8 avec une transparence de 30% */
+
+    /* Taille et centrage du content */
+    max-width: 1500px; /* Définit une largeur maximale */
+    width: 100%; /* Assure que l'élément prend 100% de la largeur de son conteneur */
+    margin: 0 auto; /* Centre horizontalement l'élément dans son conteneur parent */
+    box-sizing: border-box; /* Inclut le padding dans la taille totale */
+    border-radius: 15px;
+}
+
+
 
 .stack {
     position: relative;
@@ -603,15 +686,15 @@ canvas{
 }
 
 .skill-btn {
-    background: #ff5757;
-    border: 1px solid #ff5757;
+    background: #acdc91;
+    border: 1px solid #acdc91;
     color: #fff;
 }
 
 .down-btn {
     background: none;
     color: #2B2F37;
-    border: 1px solid #ff5757;
+    border: 1px solid #acdc91;
 }
 
 .about-text-left {
@@ -695,11 +778,18 @@ canvas{
 
 
 .services-area {
-    background-image: url(../images/fond2.png); /*--edit image--*/
+    /* background-image: url(../images/fond2.png); /*--edit image--*/ */
     background-position: center;
     background-size:cover;
     position: relative;
     height: 100%;
+}
+.services-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Permet aux blocs de se réorganiser si nécessaire */
+    gap: 20px; /* Espacement entre les éléments si besoin */
 }
 .service {
     text-align: center;
@@ -714,7 +804,7 @@ canvas{
 
 .service-icon i {
     font-size: 50px;
-    color: #ff5757;
+    color: #acdc91;
     margin-bottom: 20px;
 }
 
@@ -761,7 +851,7 @@ canvas{
 .service-box .after,
 .service-box:before,
 .service-box:after {
-    background: #777;
+    background: #acdc91;
     position: absolute;
     transition: 0.9s;
 }
@@ -862,7 +952,7 @@ canvas{
 /*----------- 9. Portfolio area Starts --------*/
 
 .portfolio-area {
-    background-image: url(../images/fond2.png); /*--edit image--*/
+    /* background-image: url(../images/fond2.png); /*--edit image--*/ */
     background-position: center;
     background-size:cover;
     position: relative;
@@ -1244,6 +1334,3 @@ ul.port-nav-list li a.active {
 }
 
 /*--------------- Footer area ends -------------*/
-
-
-
