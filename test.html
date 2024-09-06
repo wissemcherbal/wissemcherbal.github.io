@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrousel d'Images</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="carousel">
+        <div class="carousel-images">
+            <img src="images/roadmap.png" class="carousel-item" alt="Image 1">
+            <img src="images/another-image.png" class="carousel-item" alt="Image 2">
+        </div>
+        <button class="carousel-control prev" onclick="prevSlide()">&#10094;</button>
+        <button class="carousel-control next" onclick="nextSlide()">&#10095;</button>
+    </div>
+    <script src="script.js"></script>
+	<script>// script.js
+let currentIndex = 0;
+
+function showSlide(index) {
+    const slides = document.querySelectorAll('.carousel-item');
+    const totalSlides = slides.length;
+
+    // Ensure index is within bounds
+    if (index >= totalSlides) {
+        currentIndex = 0;
+    } else if (index < 0) {
+        currentIndex = totalSlides - 1;
+    } else {
+        currentIndex = index;
+    }
+
+    const offset = -currentIndex * 100;
+    document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
+}
+
+function nextSlide() {
+    showSlide(currentIndex + 1);
+}
+
+function prevSlide() {
+    showSlide(currentIndex - 1);
+}
+
+// Initial display
+showSlide(currentIndex);
+</script>
+</body>
+</html>
